@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Encoder Lab | Laboratorio Interactivo</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="hero" id="inicio">
+
+    <nav class="nav">
+      <a href="#inicio" class="logo">⚡ ENCODER LAB</a>
+
+      <div>
+        <a href="#teoria">Teoría</a>
+        <a href="#digital">Digital</a>
+        <a href="#rotatorio">Rotatorio</a>
+        <a href="#quiz">Cuestionario</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <span class="tag">
+        Sistemas Programables | Laboratorio Interactivo
+      </span>
+
+      <h1>
+        Dos tipos de <span>Encoder</span>
+        <br>
+        Un solo laboratorio
+      </h1>
+
+      <p>
+        Aprende el funcionamiento de los encoders
+        digitales y rotatorios mediante simulaciones
+        interactivas.
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="#digital">
+          Probar encoder digital
+        </a>
+
+        <a class="btn ghost" href="#rotatorio">
+          Probar encoder rotatorio
+        </a>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- SECCION DE TEORIA -->
+
+    <section id="teoria" class="section">
+
+      <p class="eyebrow">01 / Fundamentos</p>
+
+      <h2>¿Qué es un encoder?</h2>
+
+      <p>
+        Un encoder es un dispositivo o circuito
+        utilizado para transformar información
+        en una representación codificada.
+      </p>
+
+      <p>
+        En electrónica se pueden estudiar dos
+        aplicaciones importantes:
+      </p>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="emoji">🔢</div>
+
+          <h3>Encoder digital</h3>
+
+          <p>
+            Es un circuito lógico combinacional
+            que transforma una entrada activa
+            en un código binario.
+          </p>
+
+          <a href="#digital">
+            Abrir simulador →
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="emoji">⚙️</div>
+
+          <h3>Encoder rotatorio</h3>
+
+          <p>
+            Es un sensor que transforma el movimiento
+            angular de un eje en señales eléctricas.
+            Permite medir posición, desplazamiento
+            y velocidad.
+          </p>
+
+          <a href="#rotatorio">
+            Abrir simulador →
+          </a>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ENCODER DIGITAL -->
+
+    <section id="digital" class="section">
+
+      <p class="eyebrow">02 / Circuitos lógicos</p>
+
+      <h2>Simulador de Encoder Digital 8 → 3</h2>
+
+      <p>
+        Este codificador tiene ocho entradas,
+        identificadas desde D0 hasta D7,
+        y tres salidas binarias Y2, Y1 y Y0.
+      </p>
+
+      <p>
+        Activa una o varias entradas.
+        El simulador utiliza prioridad:
+        cuando hay varias entradas activas,
+        gana la entrada de mayor número.
+      </p>
+
+      <div class="panel two">
+
+        <div>
+          <h3>Entradas digitales</h3>
+
+          <div class="inputs" id="digitalInputs">
+          </div>
+
+          <div class="actions">
+            <button id="digitalClear" class="btn small">
+              Limpiar entradas
+            </button>
+
+            <button id="digitalExample"
+                    class="btn ghost small">
+              Ejemplo D2 + D6
+            </button>
+          </div>
+        </div>
+
+        <div class="result">
+
+          <p class="mini">SALIDA BINARIA</p>
+
+          <div class="bits"
+               id="binaryOutput"
+               aria-live="polite">
+            — — —
+          </div>
+
+          <p id="digitalMessage"
+             aria-live="polite">
+            Ninguna entrada activa
+          </p>
+
+          <p>
+            Indicador de validez:
+            <strong id="validOutput">0</strong>
+          </p>
+
+        </div>
+
+      </div>
+
+      <h3>Tabla de verdad</h3>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Entrada</th>
+              <th>Y2</th>
+              <th>Y1</th>
+              <th>Y0</th>
+            </tr>
+          </thead>
+
+          <tbody id="truthTable"></tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        En un codificador clásico 8 a 3 se considera
+        una sola entrada activa. Este simulador
+        incorpora prioridad y señal de validez.
+      </p>
+
+    </section>
+
+    <!-- ENCODER ROTATORIO -->
+
+    <section id="rotatorio" class="section">
+
+      <p class="eyebrow">03 / Sensores</p>
+
+      <h2>Simulador de Encoder Rotatorio</h2>
+
+      <p>
+        Un encoder rotatorio incremental genera
+        señales digitales cuando gira un eje.
+        Los canales A y B permiten determinar
+        la dirección del movimiento.
+      </p>
+
+      <div class="panel two">
+
+        <div class="rotor-wrap">
+
+          <div class="pointer">▼</div>
+
+          <div class="rotor" id="rotor">
+            <span>⚙</span>
+          </div>
+
+          <p class="hint">
+            Cada paso representa 3.75 grados.
+          </p>
+
+          <div class="actions center">
+
+            <button id="ccw" class="btn small">
+              ↶ Antihorario
+            </button>
+
+            <button id="cw" class="btn small">
+              Horario ↷
+            </button>
+
+          </div>
+
+          <div class="actions center">
+
+            <button id="auto" class="btn ghost small">
+              ▶ Giro automático
+            </button>
+
+            <button id="resetRotor"
+                    class="btn ghost small">
+              ↺ Reiniciar
+            </button>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="stats">
+
+            <div class="stat">
+              <small>Ángulo</small>
+              <strong id="angle">0.00°</strong>
+            </div>
+
+            <div class="stat">
+              <small>Pulsos / cuentas x4</small>
+              <strong id="counts">0</strong>
+            </div>
+
+            <div class="stat">
+              <small>Vueltas acumuladas</small>
+              <strong id="revs">0.000</strong>
+            </div>
+
+            <div class="stat">
+              <small>Dirección</small>
+              <strong id="direction">
+                Sin movimiento
+              </strong>
+            </div>
+
+          </div>
+
+          <h3>Señales digitales</h3>
+
+          <div class="signals">
+
+            <span>
+              Canal A
+              <b id="signalA" class="low">0</b>
+            </span>
+
+            <span>
+              Canal B
+              <b id="signalB" class="low">0</b>
+            </span>
+
+          </div>
+
+          <p class="note">
+            Secuencia en sentido horario:
+            00 → 10 → 11 → 01 → 00.
+          </p>
+
+        </div>
+
+      </div>
+
+      <h3>Tipos de encoders rotatorios</h3>
+
+      <div class="cards">
+
+        <article class="card">
+          <h3>Incremental</h3>
+          <p>
+            Genera pulsos eléctricos durante
+            el movimiento del eje.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Absoluto</h3>
+          <p>
+            Entrega un código correspondiente
+            a una posición angular.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Óptico y magnético</h3>
+          <p>
+            Utilizan tecnologías de detección
+            basadas en luz o campos magnéticos.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- CUESTIONARIO -->
+
+    <section id="quiz" class="section">
+
+      <p class="eyebrow">04 / Evaluación</p>
+
+      <h2>Comprueba tus conocimientos</h2>
+
+      <div class="panel">
+
+        <h3 id="question"></h3>
+
+        <div id="answers" class="answer-list"></div>
+
+        <p id="quizFeedback" aria-live="polite"></p>
+
+        <button id="nextQuestion"
+                class="btn small"
+                hidden>
+          Siguiente pregunta →
+        </button>
+
+        <button id="restartQuiz"
+                class="btn small"
+                hidden>
+          Repetir cuestionario
+        </button>
+
+        <p id="quizProgress" class="mini"></p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Encoder Lab | Proyecto de Sistemas Programables
+    </p>
+    <p>
+      Desarrollado con HTML, CSS y JavaScript
+    </p>
+  </footer>
+
+</body>
+</html>
